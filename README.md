@@ -3,6 +3,8 @@
 
 main branch protected, to commit create another one ```git branch <name>``` -> ```git checkout <name>```, after work create **PR**
 
+welcome to DEV branch, there's most newest fixes and patches, but more unstable. Also possible to auto-aprove PR
+
 **Any PR welcome**
 
 # Info
