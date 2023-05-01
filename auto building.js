@@ -18,13 +18,13 @@ var autobuild ={
         }
         
         
-    }
+    },
     
-    /*road: function(creep, pathR){
+    road: function(creep, pathR){
         for(var posit in pathR){
             creep.room.createConstructionSite(pahR[posit].x, pathR[posit].y, STRUCTURE_ROAD)
         }
-    }*/
+    }
     
 }
 

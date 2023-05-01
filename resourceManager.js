@@ -1,3 +1,4 @@
+var utils = require('utils');
 
 var ResourceM = {
   find1: function(creep, resourc){

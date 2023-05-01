@@ -1,4 +1,6 @@
 /*
+    tried to insert path system to reduce CPU need, now working only on builder.
+    need a lot of work
 
  automate building (1/3 - automated SPAWNroad building completed)
  automate expansion (1/3 - compleated, scouts or claimers are now will claim rooms automaticly, WIP room-message, WIP room-reserving)
