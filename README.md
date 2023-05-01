@@ -1,6 +1,9 @@
 # kirAIshki
 *Open-source screeps AI, heavy WIP, tho.*
-*Any PR welcome*
+
+main branch protected, to commit create another one ```git branch <name>``` -> ```git checkout <name>```, after work create **PR**
+
+**Any PR welcome**
 
 # Info
 kirAIshki is mine attempt to create friendly-trader bot in Screeps, that will help newbies in game understood how game works and protect them from dangerous enviroment.
