@@ -15,12 +15,19 @@ var roleBuilder = {
         }
 
         if(creep.memory.building) {
-            if(creep.moveByPath(Room.deserializePath(creep.memory.path)) == -5){
-                utils.path(creep, targets[0])
-            }
-
-            if(creep.build(targets[0]) == -9) {
-                (creep.moveByPath(Room.deserializePath(creep.memory.path)))
+            try{
+                if(creep.moveByPath(Room.deserializePath(creep.memory.path)) == -5){
+                    utils.path(creep, targets[0])
+                }
+                
+    
+                if(creep.build(targets[0]) == -9) {
+                    creep.moveByPath(Room.deserializePath(creep.memory.path))
+                }
+            } catch(err){
+                if(err){
+                    utils.path(creep, targets[0])
+                }
             }
             
         }
