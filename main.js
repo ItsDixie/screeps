@@ -40,7 +40,7 @@ module.exports.loop = function () {
             respawn.run('builder', newName, spuwn)
             
         }
-        if(fixers.length < 2 && builders.length > 0) {
+        if(fixers.length < 0 && builders.length > 0) {
             var newName = 'Fixer' + Game.time;
             respawn.run('fixer', newName, spuwn)
             

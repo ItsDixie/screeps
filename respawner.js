@@ -35,7 +35,7 @@ var respawn = {
             } 
         }
         if(job == 'picker'){
-            if(Game.spawns[spwn].spawnCreep([CARRY,CARRY,CARRY,CARRY,MOVE,MOVE], 'based_' + nick, {memory: {role: 'picker'}}) != '-6' && '-4'){
+            if(Game.spawns[spwn].spawnCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], 'based_' + nick, {memory: {role: 'picker'}}) != '-6' && '-4'){
             console.log('Spawning new picker: ' + 'based_' + nick)
 
             }else{
