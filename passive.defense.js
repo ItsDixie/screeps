@@ -18,10 +18,8 @@ const defense = {
             for(var damaged in strct){
 	             if(strct[damaged].hits < strct[damaged].hitsMax){
 	                 target = strct[damaged]
+	                 towers[tower].repair(target)
 	             }
-            }
-            if(target.length){
-                towers[tower].repair(target)
             }
             
             
