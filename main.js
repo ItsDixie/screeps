@@ -80,10 +80,10 @@ module.exports.loop = function () {
             roleUpgrader.run(creep)
         }
         if(creep.memory.role == 'picker'){
-            rolePicker.run(creep)
+            rolePicker.run(creep, 'Mother')
         }
         if(creep.memory.role == 'fixer'){
-            roleFixer.run(creep, 'Mother')
+            roleFixer.run(creep)
         }
         if(creep.memory.role == 'scout'){
             roleScout.run(creep)

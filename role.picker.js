@@ -1,5 +1,5 @@
 var rolePicker = {
-    run: function(creep){
+    run: function(creep, spawnname){
         
         if(creep.memory.picking && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.picking = false;
@@ -11,9 +11,9 @@ var rolePicker = {
         const target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES);
         if(target) {
             if(creep.memory.picking){
-                if(Game.spawns['Mother'].energy < Game.spawns['Mother'].energyCapacity) {                   /* FIX TO CUSTOM SPAWN NAME NEEDED */
-                    if(creep.transfer(Game.spawns['Mother'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(Game.spawns['Mother']);    
+                if(Game.spawns[spawnname].energy < Game.spawns[spawnname].energyCapacity) {                   /* FIX TO CUSTOM SPAWN NAME NEEDED */
+                    if(creep.transfer(Game.spawns[spawnname], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(Game.spawns[spawnname]);    
                     }
                 } else {
                     var targets = creep.room.find(FIND_STRUCTURES, {
