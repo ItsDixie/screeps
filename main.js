@@ -18,6 +18,7 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader')
     var fixers = _.filter(Game.creeps, (creep) => creep.memory.role == 'fixer')
     var scouts = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout')
+    var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker')
     
     for(var spuwn in Game.spawns){
         
@@ -50,7 +51,7 @@ module.exports.loop = function () {
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
         }
-        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0){
+        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)){
             Game.spawns[spuwn].memory.attak = true
             var newName = 'ATTACKUNIT-' + Game.time;
             respawn.run('attacker', newName, spuwn)

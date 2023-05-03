@@ -58,7 +58,7 @@ var respawn = {
             }
         }
         if(job == 'attacker'){
-            if(Game.spawns[spwn].spawnCreep([ATTACK,ATTACK,TOUGH,TOUGH,MOVE], nick, {memory: {role: 'attacker'}}) != '-6'){
+            if(Game.spawns[spwn].spawnCreep([TOUGH,TOUGH,ATTACK,ATTACK,MOVE], nick, {memory: {role: 'attacker'}}) != '-6'){
             console.log('Spawning new attacker: ' + nick)
 
             }

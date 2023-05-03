@@ -6,6 +6,8 @@ var attacker = {
                 creep.moveTo(targets[0])
                 creep.say("Intruder!", {public: true})
             }
+        }else{
+            creep.suicide()
         }
     }
 }
