@@ -30,7 +30,7 @@ module.exports.loop = function () {
             respawn.run('picker', newName, spuwn)
             
         }
-        if(upgraders.length < 3 && pickers.length > 0) {
+        if(upgraders.length < 2 && pickers.length > 0) {
             var newName = 'Upgrader' + Game.time;
             respawn.run('upgrader', newName, spuwn)
             
@@ -45,7 +45,7 @@ module.exports.loop = function () {
             respawn.run('fixer', newName, spuwn)
             
         }
-        if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < 1){
+        if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < Game.gcl){
             var newName = 'Scout' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
         }

@@ -6,22 +6,26 @@ var roleScout = { /* need fix */
         const raw = Game.map.describeExits(creep.room.name);
         const roms = Object.values(raw);
         
-    
-        for(var rom in roms){
-            const stats = Game.map.getRoomStatus(roms[rom]).status
-            if(stats == 'novice' && !creep.memory.Found){
-                var target = roms[rom] /* becoming undefined need fix */
-                console.log(target)
-                creep.memory.Rum = target
+        if(!creep.memory.Found){
+            rand = Math.floor(Math.random() * roms.length)
+            
+            const stats = Game.map.getRoomStatus(roms[rand]).status
+            if(stats == 'novice' && stats != 'closed' && !creep.memory.Found){
+                creep.memory.Rum = roms[rand]
+                creep.memory.Found = true
+                console.log(creep.memory.Rum)
             }
         }
+        
         if(creep.memory.Found){
-            var target = creep.memory.Found
+            var target = creep.memory.Rum
             if(creep.room.name == target){
-                if(!creep.room.find(FIND_HOSTILE_STRUCTURES).length){
+                console.log(creep.room.find(FIND_HOSTILE_CREEPS).length)
+                creep.moveTo(creep.room.controller) /* REFACTOR FOR BETTER USE*/
+                if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0){
                     const result = creep.room;
                     if(creep.room.controller) {
-                        if(creep.signController(creep.room.controller, 'Dixxe friendly expansion planned here!') == -9){
+                        if(creep.signController(creep.room.controller, 'Dixxe bot on github: https://github.com/ItsDixie/screeps Any help welcome!') == -9){
                             creep.moveTo(creep.room.controller);
                         }
                         if(creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
