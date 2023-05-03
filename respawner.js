@@ -58,9 +58,13 @@ var respawn = {
             }
         }
         if(job == 'attacker'){
-            if(Game.spawns[spwn].spawnCreep([ATTACK,ATTACK,TOUGH,MOVE,MOVE,MOVE], nick, {memory: {role: 'attacker'}}) != '-6'){
-            console.log('Spawning new attacker: ' + nick)
-
+            if(Game.spawns[spwn].spawnCreep([TOUGH, TOUGH, TOUGH, MOVE, RANGED_ATTACK, ATTACK, ATTACK, MOVE], 'BASED-' + nick, {memory: {role: 'attacker'}}) != '-6' && '-4'){
+            return('Spawning new attacker: ' + 'BASED-' + nick)
+            
+            }else{
+                if(Game.spawns[spwn].spawnCreep([TOUGH,TOUGH,ATTACK,ATTACK, MOVE], 'SIMPLE-' + nick, {memory: {role: 'attacker'}}) != '-6' && '-4'){
+                return('Spawning new attacker: ' + 'SIMPLE-' + nick)
+                }
             }
         }
         
