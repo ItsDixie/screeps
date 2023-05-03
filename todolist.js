@@ -1,6 +1,8 @@
 /*
     tried to insert path system to reduce CPU need, now working only on builder.
     need a lot of work
+    
+    fix picker spawn finding
 
  automate building (1/3 - automated SPAWNroad building completed)
  automate expansion (1/3 - compleated, scouts or claimers are now will claim rooms automaticly, WIP room-message (make through room memory), WIP room-reserving)
