@@ -13,8 +13,9 @@ It doesn't absolutly mean it will be peaceful if you will get bad reputation you
 
 Currently very raw and includes basic functions like:
 * passive-defence
+* active-defence
 * auto creep production
-* fixer,builder,harvester,picker,scout creeps
+* fixer,builder,harvester,picker,explorer,attacker creeps
 * raw room claim function (through scout creep)
 * Auto road construction from spawn to source and controller
 
