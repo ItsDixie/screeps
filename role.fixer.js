@@ -20,12 +20,15 @@ var roleFixer = {
 	             }
   
 	         }
-            if(creep.repair(target) == ERR_NOT_IN_RANGE){
-                creep.moveTo(target)
-                
-            }
+	         if(target){
+                if(creep.repair(target) == ERR_NOT_IN_RANGE){
+                    creep.moveTo(target)
+                }
+	         }else{
+	             creep.moveTo(creep.room.controller)
+	         }
 	    }else {
-	        getResource.find1(creep, RESOURCE_ENERGY);
+	        getResource.find1(creep, RESOURCE_ENERGY)
             
             
 	   }
