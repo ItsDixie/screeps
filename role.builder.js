@@ -5,8 +5,9 @@ var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+        creep.memory.building
         let targets = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
-
+        
         if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0 || targets.length == 0) {
             creep.memory.building = false;
         }
@@ -30,11 +31,9 @@ var roleBuilder = {
                 }
             }
             
-        }
-        else {
-            if(creep.store[RESOURCE_ENERGY] == 0){
-                getResource.find1(creep, RESOURCE_ENERGY);
-            }
+        }else {
+            getResource.find1(creep, RESOURCE_ENERGY);
+            
 
         }
     }

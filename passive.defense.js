@@ -6,6 +6,23 @@ const defense = {
             if(closestHostile) {
                 towers[tower].attack(closestHostile);
             }
+            
+           var strct = towers[0].room.find(FIND_STRUCTURES, {
+                 filter: (structure) => {
+                    return (structure.structureType == STRUCTURE_STORAGE ||
+                            structure.structureType == STRUCTURE_ROAD ||
+                            structure.structureType == STRUCTURE_CONTAINER)
+                        }
+                    })
+            
+            for(var damaged in strct){
+	             if(strct[damaged].hits < strct[damaged].hitsMax){
+	                 target = strct[damaged]
+	                 towers[tower].repair(target)
+	             }
+            }
+            
+            
         }
     }
 }

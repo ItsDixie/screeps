@@ -1,11 +1,15 @@
 /*
     tried to insert path system to reduce CPU need, now working only on builder.
     need a lot of work
+    
+    fix picker spawn finding
 
  automate building (1/3 - automated SPAWNroad building completed)
- automate expansion (1/3 - compleated, scouts or claimers are now will claim rooms automaticly, WIP room-message, WIP room-reserving)
+ automate invasion (1/3 - automated creep creation, WIP choose room to attack, WIP auto attack)
+ automate expansion (1/3 - compleated, scouts or claimers are now will claim rooms automaticly, WIP room-message (make through room memory), WIP room-reserving)
+ automate walls build and fixing - ()
  
- automate defend (1/3 - all towers now shooting enemies, WIP different target for each turret, WIP automat ACTIVE defense or REFACTORING )
+ automate defend (2/4 - all towers now shooting enemies, WIP different target for each turret, automat ACTIVE defense, or REFACTORING )
  
  automate fixing (1/1 - maybe diffirent targets)
  
