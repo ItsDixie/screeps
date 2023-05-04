@@ -10,6 +10,10 @@ var pasDefense = require('passive.defense')
 var respawn = require('respawner')
 var autobuild = require('auto building')
 
+/*
+    Variables allowed to change: */
+var allowExpand = false /* change to allow expand */
+
 module.exports.loop = function () {
     
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester')
@@ -51,7 +55,7 @@ module.exports.loop = function () {
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
         }
-        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)){
+        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)  && allowExpand){
             Game.spawns[spuwn].memory.attak = true
             var newName = 'ATTACKUNIT-' + Game.time;
             respawn.run('attacker', newName, spuwn)
