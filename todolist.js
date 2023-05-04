@@ -2,7 +2,7 @@
     tried to insert path system to reduce CPU need, now working only on builder.
     need a lot of work
     
-    fix picker spawn finding
+    fix picker spawn finding and refactor his code to simple read
 
  automate building (1/3 - automated SPAWNroad building completed)
  automate invasion (1/3 - automated creep creation, WIP choose room to attack, WIP auto attack)
