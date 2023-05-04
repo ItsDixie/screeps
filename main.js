@@ -46,7 +46,7 @@ module.exports.loop = function () {
             respawn.run('builder', newName, spuwn)
             
         }
-        if(fixers.length < 1 && Game.spawns[spuwn].room.controller.level < 4 && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
+        if(fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}}).length < 1 && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'FIXUNIT-' + Game.time;
             respawn.run('fixer', newName, spuwn)
             
