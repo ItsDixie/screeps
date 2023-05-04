@@ -62,7 +62,7 @@ var respawn = {
             return('Spawning new attacker: ' + 'BASED-' + nick)
             
             }else{
-                if(Game.spawns[spwn].spawnCreep([TOUGH,TOUGH,ATTACK,ATTACK, MOVE], 'SIMPLE-' + nick, {memory: {role: 'attacker'}}) != '-6' && '-4'){
+                if(Game.spawns[spwn].spawnCreep([TOUGH,TOUGH,MOVE,ATTACK,ATTACK], 'SIMPLE-' + nick, {memory: {role: 'attacker'}}) != '-6' && '-4'){
                 return('Spawning new attacker: ' + 'SIMPLE-' + nick)
                 }
             }
