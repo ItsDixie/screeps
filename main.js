@@ -51,11 +51,11 @@ module.exports.loop = function () {
             respawn.run('fixer', newName, spuwn)
             
         }
-        if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < Game.gcl && !Game.spawns[spuwn].memory.attak){
+        if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < Game.gcl && !Game.spawns[spuwn].memory.attak && allowExpand){
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
         }
-        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)  && allowExpand){
+        if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)){
             Game.spawns[spuwn].memory.attak = true
             var newName = 'ATTACKUNIT-' + Game.time;
             respawn.run('attacker', newName, spuwn)
