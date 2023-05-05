@@ -20,7 +20,6 @@ var roleScout = { /* need fix */
         if(creep.memory.Found){
             var target = creep.memory.Rum
             if(creep.room.name == target){
-                console.log(creep.room.find(FIND_HOSTILE_CREEPS).length)
                 creep.moveTo(creep.room.controller) /* REFACTOR FOR BETTER USE*/
                 if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0){
                     const result = creep.room;

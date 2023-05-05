@@ -5,6 +5,7 @@ var rolePicker = require('role.picker')
 var roleFixer = require('role.fixer')
 var roleScout = require('role.scout')
 var roleAttacker = require('role.attacker')
+var roleWaller = require('role.wallkeeper')
 var pasDefense = require('passive.defense')
 
 var respawn = require('respawner')
@@ -23,6 +24,7 @@ module.exports.loop = function () {
     var fixers = _.filter(Game.creeps, (creep) => creep.memory.role == 'fixer')
     var scouts = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout')
     var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker')
+    var wallkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallkeeper')
     
     for(var spuwn in Game.spawns){
         
@@ -50,6 +52,10 @@ module.exports.loop = function () {
             var newName = 'FIXUNIT-' + Game.time;
             respawn.run('fixer', newName, spuwn)
             
+        }
+        if(wallkeepers.length < 2 && !Game.spawns[spuwn].memory.attak && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_WALL}}).length > 1){
+            var newName = 'WALLUNIT-' + Game.time;
+            respawn.run('wallkeeper', newName, spuwn)
         }
         if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < Game.gcl && !Game.spawns[spuwn].memory.attak && allowExpand){
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
@@ -98,6 +104,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'attacker'){
             roleAttacker.run(creep)
+        }
+        if(creep.memory.role == 'wallkeeper'){
+            roleWaller.run(creep)
         }
     }
 }

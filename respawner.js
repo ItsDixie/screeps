@@ -51,6 +51,12 @@ var respawn = {
 
             }
         }
+        if(job == 'wallkeeper'){
+            if(Game.spawns[spwn].spawnCreep([WORK,CARRY,MOVE], nick, {memory: {role: 'wallkeeper'}}) != '-6'){
+            console.log('Spawning new wallkeeper: ' + nick)
+
+            }
+        }
         if(job == 'scout'){
             if(Game.spawns[spwn].spawnCreep([CLAIM,MOVE,MOVE], nick, {memory: {role: 'scout'}}) != '-6'){
             console.log('Spawning new scout: ' + nick)
