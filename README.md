@@ -1,13 +1,14 @@
-# kirAIshki
-*Open-source screeps AI, heavy WIP, tho.*
+# Dixxum
+*Open-source screeps BOT, heavy WIP, tho.*
 
 main branch protected, to commit create another one ```git branch <name>``` -> ```git checkout <name>```, after work create **PR**
 
 **Any PR welcome**
 
 # Info
-kirAIshki is mine attempt to create friendly-trader bot in Screeps, that will help newbies in game understood how game works and protect them from dangerous enviroment.
+Dixxum is mine attempt to create friendly-trader bot in Screeps, that will help newbies in game understood how game works and protect them from dangerous enviroment.
 It doesn't absolutly mean it will be peaceful if you will get bad reputation you will be not welcome (someday I will make this dream to live)
+Also I try to implicate genetic algorithm for some features, but only when ALL core features will compleated
 
 Currently very raw and includes basic functions like:
 * passive-defence
@@ -20,6 +21,8 @@ Currently very raw and includes basic functions like:
 
 To-do list:
 --
+    genetic algorith
+
     tried to insert path system to reduce CPU need, now working only on builder.
     need a lot of work
     
