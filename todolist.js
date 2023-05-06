@@ -4,6 +4,7 @@
     
     fix picker spawn finding and refactor his code to simple read
     fix wallkeeper issues and make it more complex to handle big hp walls
+    fix path system making creeps don't move for some reason
     make scout finding room code more complex
     
  automate building (1/3 - automated SPAWNroad building completed)
