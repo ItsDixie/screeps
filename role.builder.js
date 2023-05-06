@@ -33,6 +33,7 @@ var roleBuilder = {
             
         }else {
             getResource.find1(creep, RESOURCE_ENERGY);
+            creep.memory.path = 0
             if(creep.store.getFreeCapacity() == 0){
                 creep.moveTo(creep.room.controller)
             }
