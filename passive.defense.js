@@ -2,16 +2,20 @@ const defense = {
     run: function(spuwn){
         const towers = spuwn.room.find(FIND_MY_STRUCTURES, {filter: {structureType: STRUCTURE_TOWER}});
         
-        var ramparts = towers[0].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_RAMPART}})
+        if(towers.length > 0){   
+            var ramparts = towers[0].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_RAMPART}})
         
-        var strct = towers[0].room.find(FIND_STRUCTURES, {
-                 filter: (structure) => {
-                    return (structure.structureType == STRUCTURE_STORAGE ||
-                            structure.structureType == STRUCTURE_ROAD ||
-                            structure.structureType == STRUCTURE_CONTAINER)
-                        }
-                    })
-                    
+
+            var strct = towers[0].room.find(FIND_STRUCTURES, {
+                     filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_STORAGE ||
+                                structure.structureType == STRUCTURE_ROAD ||
+                                structure.structureType == STRUCTURE_CONTAINER)
+                            }
+                        })
+        
+        }
+        
         for(var tower in towers){    /* for each tower */
             var closestHostile = towers[tower].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
             if(closestHostile) {
