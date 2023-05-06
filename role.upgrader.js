@@ -1,7 +1,7 @@
 var getResource = require('resourceManager')
 var roleUpgrader = {
 
-    /** @param {Creep} creep **/
+
     run: function(creep) {
         if(creep.memory.upgrading && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.upgrading = false;

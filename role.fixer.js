@@ -2,7 +2,6 @@ var getResource = require('resourceManager')
 let target
 var roleFixer = {
 
-    /** @param {Creep} creep **/
     run: function(creep) {
 
 	    if(creep.memory.repairing && creep.store[RESOURCE_ENERGY] == 0) {

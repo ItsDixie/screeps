@@ -94,13 +94,13 @@ module.exports.loop = function () {
             roleUpgrader.run(creep)
         }
         if(creep.memory.role == 'picker'){
-            rolePicker.run(creep, 'Mother')
+            rolePicker.run(creep, creep.room.find(FIND_MY_STRUCTURES, {filter:{structureType: STRUCTURE_SPAWN}})[0].name)
         }
         if(creep.memory.role == 'fixer'){
             roleFixer.run(creep)
         }
         if(creep.memory.role == 'scout'){
-            roleScout.run(creep)
+            roleScout.run(creep, creep.room.find(FIND_MY_STRUCTURES, {filter:{structureType: STRUCTURE_SPAWN}})[0].name)
         }
         if(creep.memory.role == 'attacker'){
             roleAttacker.run(creep)
