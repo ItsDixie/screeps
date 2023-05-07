@@ -15,7 +15,7 @@ var wallKeeper = {
 	    
 	    if(creep.memory.repairing){
 	        for(var wall in walls){
-	            if(walls[wall].hits < 20000){     /* <- look here for handle big hp walls */
+	            if(walls[wall].hits < 1000){     /* <- look here for handle big hp walls */
                     try{
                         if(creep.moveByPath(Room.deserializePath(creep.memory.path)) == -5){
                             utils.path(creep, walls[wall])

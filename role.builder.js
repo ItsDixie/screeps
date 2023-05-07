@@ -27,6 +27,7 @@ var roleBuilder = {
                 }
             } catch(err){
                 if(err){
+                    console.log(err)
                     utils.path(creep, targets[0])
                 }
             }

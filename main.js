@@ -38,7 +38,7 @@ module.exports.loop = function () {
             respawn.run('picker', newName, spuwn)
             
         }
-        if(upgraders.length < 2 && pickers.length > 0 && !Game.spawns[spuwn].memory.attak) {
+        if(upgraders.length < 3 && pickers.length > 0 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'UPGRUNIT-' + Game.time;
             respawn.run('upgrader', newName, spuwn)
             
@@ -57,7 +57,8 @@ module.exports.loop = function () {
             var newName = 'WALLUNIT-' + Game.time;
             respawn.run('wallkeeper', newName, spuwn)
         }
-        if(Game.gcl > Object.keys(Game.rooms).length && scouts.length < Game.gcl && !Game.spawns[spuwn].memory.attak && allowExpand){
+
+        if(Game.gcl.level > Object.keys(Game.rooms).length && scouts.length < Game.gcl && !Game.spawns[spuwn].memory.attak && allowExpand){
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
         }

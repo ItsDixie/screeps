@@ -12,7 +12,13 @@ var roleFixer = {
 	    }
 
 	    if(creep.memory.repairing) {
-	        var constrcts = creep.room.find(FIND_STRUCTURES)
+            var constrcts = creep.room.find(FIND_STRUCTURES, {
+                     filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_STORAGE ||
+                                structure.structureType == STRUCTURE_ROAD ||
+                                structure.structureType == STRUCTURE_CONTAINER)
+                            }
+                        })
 	         for(var constrt in constrcts){
 	             if(constrcts[constrt].hits < constrcts[constrt].hitsMax){
 	                 target = constrcts[constrt]
