@@ -1,6 +1,9 @@
 var getResource = require('resourceManager')
 var utils = require('utils');
 
+/* config variables */
+let allowBuild = true
+
 var roleBuilder = {
 
     /** @param {Creep} creep **/
@@ -11,7 +14,7 @@ var roleBuilder = {
         if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0 || targets.length == 0) {
             creep.memory.building = false;
         }
-        if(!creep.memory.building && creep.store.getFreeCapacity() == 0 && targets.length > 0) {
+        if(!creep.memory.building && creep.store.getFreeCapacity() == 0 && targets.length > 0 && allowBuild) {
             creep.memory.building = true;
         }
 

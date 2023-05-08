@@ -16,7 +16,7 @@ var roleScout = { /* need fix */
             if(creep.room.name == target){
                 if(creep.room.controller){
                     creep.moveTo(creep.room.controller) /* REFACTOR FOR BETTER USE*/
-                    if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0){
+                    if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0 && !creep.room.controller.owner.username){
                         let result = creep.room.name
                         if(creep.room.controller) {
                             if(creep.signController(creep.room.controller, 'Dixxe bot on github: https://github.com/ItsDixie/screeps Any help welcome!') == -9){

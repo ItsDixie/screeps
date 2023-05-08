@@ -59,19 +59,17 @@ module.exports.loop = function () {
             respawn.run('fixer', newName, spuwn)
             
         }
-        if(wallkeepers.length < 2 && !Game.spawns[spuwn].memory.attak && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_WALL}}).length > 1){
+        if(wallkeepers.length < 2 && !Game.spawns[spuwn].memory.attak && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_WALL}}).length > 20){
             var newName = 'WALLUNIT-' + Game.time;
             respawn.run('wallkeeper', newName, spuwn)
         }
-        
         if(Game.gcl.level > Object.keys(Game.rooms).length && scouts.length < Game.gcl.level && !Game.spawns[spuwn].memory.attak && allowExpand){
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
             respawn.run('scout', newName, spuwn)
-            if(expansionists.length < 2){
-                var newName = 'EXPANUNIT-' + Object.keys(Game.rooms).length
-                respawn.run('expansionist', newName, spuwn)
-            }
-            
+        }
+        if(expansionists.length < 4 && !Game.spawns[spuwn].memory.attak){
+            var newName = 'EXPAUNIT-' + Game.time
+            respawn.run('expansionist', newName, spuwn)
         }
 
         if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)){
