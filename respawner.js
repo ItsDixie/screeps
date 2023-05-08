@@ -56,9 +56,16 @@ var respawn = {
             }
         }
         if(job == 'scout'){
-            if(Game.spawns[spwn].spawnCreep([CLAIM,MOVE,MOVE], nick, {memory: {role: 'scout'}}) != '-6'){
+            if(Game.spawns[spwn].spawnCreep([CLAIM,MOVE,MOVE], nick, {memory: {role: 'scout'}}) != '-6' && Game.spawns[spwn].spawnCreep([CLAIM,MOVE,MOVE], nick, {memory: {role: 'scout'}}) != '-4'){
             console.log('Spawning new scout: ' + nick)
 
+            }
+        }
+        if(job == 'expansionist'){
+            if(Game.spawns[spwn].spawnCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE], 'BASED-'+ nick, {memory: {role: 'expansionist'}}) != '-6'){
+
+            }else{
+                Game.spawns[spwn].spawnCreep([WORK,CARRY,MOVE,MOVE], 'SIMPLE-'+ nick, {memory: {role: 'expansionist'}})
             }
         }
         if(job == 'attacker'){

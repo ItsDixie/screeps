@@ -32,7 +32,7 @@ const defense = {
             }
             
             for(var rampart in ramparts){
-                if(ramparts[rampart].hits < 20000){
+                if(ramparts[rampart].hits < 1000){
                     towers[tower].repair(ramparts[rampart])
                 }
             }

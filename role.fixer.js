@@ -1,4 +1,6 @@
 var getResource = require('resourceManager')
+var utils = require('utils');
+
 let target
 var roleFixer = {
 
@@ -27,10 +29,10 @@ var roleFixer = {
 	         }
 	         if(target){
                 if(creep.repair(target) == ERR_NOT_IN_RANGE){
-                    creep.moveTo(target)
+                    utils.path(creep, target)
                 }
 	         }else{
-	             creep.moveTo(creep.room.controller)
+	             utils.path(creep, creep.room.controller)
 	         }
 	    }else {
 	        getResource.find1(creep, RESOURCE_ENERGY)

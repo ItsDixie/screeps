@@ -20,7 +20,7 @@ var ResourceM = {
               
               
               if(creep.withdraw(target, resourc, creep.getFreeCapacity) == ERR_NOT_IN_RANGE){
-                creep.moveTo(target)
+                utils.path(creep, target)
               }
               
               if(shortT == -6){
@@ -36,12 +36,12 @@ var ResourceM = {
     if(creep.memory.targetFound == false){
         target = creep.room.find(resourc);
         if(creep.harvest(resourc) == ERR_NOT_IN_RANGE && creep.harvest(resourc) != -7){
-                creep.moveTo(resourc);
+                utils.path(creep, resourc);
                 
         }else{
                 target = creep.pos.findClosestByRange(FIND_DROPPED_RESOURCES)
                 if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                    utils.path(creep, target);
                     
                 }
                 
