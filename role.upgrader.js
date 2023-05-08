@@ -1,4 +1,6 @@
 var getResource = require('resourceManager')
+var utils = require('utils');
+
 var roleUpgrader = {
 
 
@@ -11,7 +13,7 @@ var roleUpgrader = {
 	    }
 	   if(creep.memory.upgrading){
             if(creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE){
-                creep.moveTo(creep.room.controller)
+                utils.path(creep, creep.room.controller)
             }
         }
         

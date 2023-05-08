@@ -1,3 +1,5 @@
+var utils = require('utils');
+
 var rolePicker = {
     run: function(creep, spawnname){
         
@@ -14,7 +16,7 @@ var rolePicker = {
                 if(!Game.spawns[spawnname].memory.attak){
                     if(Game.spawns[spawnname].energy < Game.spawns[spawnname].energyCapacity) {                   /* FIX TO CUSTOM SPAWN NAME NEEDED */
                         if(creep.transfer(Game.spawns[spawnname], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(Game.spawns[spawnname]);    
+                            utils.path(creep, Game.spawns[spawnname]);    
                         }
                     } else {
                         var targets = creep.room.find(FIND_STRUCTURES, {
@@ -28,7 +30,7 @@ var rolePicker = {
                         })
                         if(targets.length > 0) {
                             if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(targets[0]);
+                                utils.path(creep, targets[0]);
                             }
                         }
                     }
@@ -43,13 +45,13 @@ var rolePicker = {
                         
                         if(targets.length > 0) {
                             if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                                creep.moveTo(targets[0]);
+                                utils.path(creep, targets[0]);
                             }
                         }
                 }
             } else {
                 if(creep.pickup(target) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target);
+                    utils.path(creep, target);
                 } 
             }
         }

@@ -1,4 +1,6 @@
 var getResource = require('resourceManager')
+var utils = require('utils');
+
 let target
 var roleFixer = {
 
@@ -12,7 +14,13 @@ var roleFixer = {
 	    }
 
 	    if(creep.memory.repairing) {
-	        var constrcts = creep.room.find(FIND_STRUCTURES)
+            var constrcts = creep.room.find(FIND_STRUCTURES, {
+                     filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_STORAGE ||
+                                structure.structureType == STRUCTURE_ROAD ||
+                                structure.structureType == STRUCTURE_CONTAINER)
+                            }
+                        })
 	         for(var constrt in constrcts){
 	             if(constrcts[constrt].hits < constrcts[constrt].hitsMax){
 	                 target = constrcts[constrt]
@@ -21,10 +29,10 @@ var roleFixer = {
 	         }
 	         if(target){
                 if(creep.repair(target) == ERR_NOT_IN_RANGE){
-                    creep.moveTo(target)
+                    utils.path(creep, target)
                 }
 	         }else{
-	             creep.moveTo(creep.room.controller)
+	             utils.path(creep, creep.room.controller)
 	         }
 	    }else {
 	        getResource.find1(creep, RESOURCE_ENERGY)

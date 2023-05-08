@@ -16,8 +16,8 @@ var roleScout = { /* need fix */
             if(creep.room.name == target){
                 if(creep.room.controller){
                     creep.moveTo(creep.room.controller) /* REFACTOR FOR BETTER USE*/
-                    if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0){
-                        const result = creep.room;
+                    if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0 && !creep.room.controller.owner.username){
+                        let result = creep.room.name
                         if(creep.room.controller) {
                             if(creep.signController(creep.room.controller, 'Dixxe bot on github: https://github.com/ItsDixie/screeps Any help welcome!') == -9){
                                 creep.moveTo(creep.room.controller);
@@ -44,7 +44,7 @@ var roleScout = { /* need fix */
             rand = Math.floor(Math.random() * roms.length)
             
             const stats = Game.map.getRoomStatus(roms[rand]).status
-            if(stats == 'novice' && stats != 'closed' && !badRooms.includes(roms[rand]) && creep.memory.BornRoom != roms[rand] && !creep.memory.Found){
+            if(stats == 'normal' && stats != 'closed' && !badRooms.includes(roms[rand]) && creep.memory.BornRoom != roms[rand] && !creep.memory.Found){
                 creep.memory.Rum = roms[rand]
                 creep.memory.Found = true
                 console.log(creep.memory.Rum)
@@ -57,7 +57,41 @@ var roleScout = { /* need fix */
             creep.memory.Found = false;
             badRooms.push(creep.room.name)
         }
+    },
+    
+    result: function(creep, spuwn){
+        creep.memory.Rum
+        creep.memory.Found
+        creep.memory.BornRoom = Game.spawns[spuwn].room.name
+        
+        const raw = Game.map.describeExits(creep.room.name);
+        const roms = Object.values(raw);
+        
+
+        if(creep.memory.Found){
+            var target = creep.memory.Rum
+            if(creep.room.name == target){
+                if(creep.room.controller){
+                    creep.moveTo(creep.room.controller) /* REFACTOR FOR BETTER USE*/
+                    if(creep.room.find(FIND_HOSTILE_CREEPS).length == 0){
+                        creep.memory.target = creep.room.name
+                    }
+                }
+            }else{
+                var route = Game.map.findRoute(creep.room, creep.memory.Rum);
+                const exit = creep.pos.findClosestByRange(route[0].exit);
+                creep.moveTo(exit)
+            } 
+    }else{
+                rand = Math.floor(Math.random() * roms.length)
+                
+                const stats = Game.map.getRoomStatus(roms[rand]).status
+                if(stats == 'normal' && stats != 'closed' && !badRooms.includes(roms[rand]) && creep.memory.BornRoom != roms[rand] && !creep.memory.Found){
+                    creep.memory.Rum = roms[rand]
+                    creep.memory.Found = true
+                }
+        }
     }
-};
+}
 
 module.exports = roleScout;
