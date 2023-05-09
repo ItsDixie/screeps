@@ -8,7 +8,7 @@ var expansionist = {
     run: function(creep) {
         if(!creep.memory.target) {
             try{
-                scout.result(creep, 'Spawn1')
+                scout.result(creep, creep.room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_SPAWN}})[0].name)
             }catch(err){
                 console.log(err)
             }
