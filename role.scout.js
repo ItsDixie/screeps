@@ -24,6 +24,20 @@ var roleScout = { /* need fix */
                             }
                             if(creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                                 creep.moveTo(creep.room.controller);
+                                if(creep.room.controller.owner.username == 'Dixxe'){
+                                    var x = Math.floor((creep.room.controller.pos.x + creep.room.find(FIND_SOURCES)[0].pos.x) / 2)
+                                    var y = Math.floor((creep.room.controller.pos.y + creep.room.find(FIND_SOURCES)[0].pos.y) / 2)
+                                    if(creep.room.createConstructionSite(x, y, STRUCTURE_SPAWN, 'Spawn' + Game.time) == -7){
+                                        rand = Math.floor(Math.random() * 10)
+                                        if(rand > 4){
+                                            x = x - rand
+                                            y = y + rand
+                                        }else{
+                                            x = x + rand
+                                            y = y - rand
+                                        }
+                                    }
+                                }
                             }
                         }
                         
