@@ -20,20 +20,20 @@ var allowExpand = true /* change to allow expand */
 
 module.exports.loop = function () {
     
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester')
-    var pickers = _.filter(Game.creeps, (creep) => creep.memory.role == 'picker')
-    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder')
-    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader')
-    var fixers = _.filter(Game.creeps, (creep) => creep.memory.role == 'fixer')
-    
     var scouts = _.filter(Game.creeps, (creep) => creep.memory.role == 'scout')
     var expansionists = _.filter(Game.creeps, (creep) => creep.memory.role == 'expansionist')
-    
-    var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker')
-    var wallkeepers = _.filter(Game.creeps, (creep) => creep.memory.role == 'wallkeeper')
-    
+
     for(var spuwn in Game.spawns){
         
+        var harvesters = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'harvester')
+        var pickers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'picker')
+        var builders = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'builder')
+        var upgraders = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'upgrader')
+        var fixers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'fixer')
+        
+        var attackers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'attacker')
+        var wallkeepers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'wallkeeper')
+
         if(harvesters.length < 3 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'HARVUNIT-' + Game.time;
             respawn.run('harvester', newName, spuwn)
@@ -54,22 +54,26 @@ module.exports.loop = function () {
             respawn.run('builder', newName, spuwn)
             
         }
-        if(fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}})[0].store[RESOURCE_ENERGY] < 100 && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
+        if(fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}})[0] == undefined && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'FIXUNIT-' + Game.time;
             respawn.run('fixer', newName, spuwn)
             
         }
-        if(wallkeepers.length < 2 && !Game.spawns[spuwn].memory.attak && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_WALL}}).length > 20){
+        if(wallkeepers.length < 2 && !Game.spawns[spuwn].memory.attak && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_WALL}})[0].hits < 5000){
             var newName = 'WALLUNIT-' + Game.time;
             respawn.run('wallkeeper', newName, spuwn)
         }
         if(Game.gcl.level > Object.keys(Game.rooms).length && scouts.length < Game.gcl.level && !Game.spawns[spuwn].memory.attak && allowExpand){
             var newName = 'EXPLUNIT-' + Object.keys(Game.rooms).length
+            var AllowExpaunit = true
             respawn.run('scout', newName, spuwn)
         }
-        if(expansionists.length < 4 && !Game.spawns[spuwn].memory.attak){
+        if(expansionists.length < 3 && !Game.spawns[spuwn].memory.attak && AllowExpaunit){
             var newName = 'EXPAUNIT-' + Game.time
             respawn.run('expansionist', newName, spuwn)
+            if(expansionists.length == 3){
+                var AllowExpaunit = false
+            }
         }
 
         if(Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length > 0 && attackers.length < (Game.spawns[spuwn].room.find(FIND_HOSTILE_CREEPS).length * 2)){

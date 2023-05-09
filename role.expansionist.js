@@ -19,7 +19,6 @@ var expansionist = {
                 var builds = _.filter(Game.creeps, (creep) => creep.memory.type == 'build')
                 var harvs = _.filter(Game.creeps, (creep) => creep.memory.type == 'harv')
                 var upgs = _.filter(Game.creeps, (creep) => creep.memory.type == 'upg')
-                console.log(harvs.length < 2 && creep.memory.type == undefined)
                 if(harvs.length < 2 && creep.memory.type == undefined){
                     creep.memory.type = 'harv'
                 }
