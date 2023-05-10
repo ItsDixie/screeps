@@ -54,7 +54,7 @@ module.exports.loop = function () {
             respawn.run('builder', newName, spuwn)
             
         }
-        if(fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}})[0] == undefined && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
+        if(fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}})[0] == undefined && builders.length > 1 && !Game.spawns[spuwn].memory.attak || fixers.length < 1 && Game.spawns[spuwn].room.find(FIND_STRUCTURES, {filter:{structureType: STRUCTURE_TOWER}})[0].store[RESOURCE_ENERGY] < 100 && builders.length > 1 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'FIXUNIT-' + Game.time;
             respawn.run('fixer', newName, spuwn)
             
