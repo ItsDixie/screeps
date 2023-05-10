@@ -5,6 +5,10 @@ Dixxum is mine attempt to create friendly-trader bot in Screeps, that will help 
 It doesn't absolutly mean it will be peaceful if you will get bad reputation you will be not welcome (someday I will make this dream to live)
 Also I try to implicate genetic algorithm for some features, but only when ALL core features will compleated
 
+# Road map
+Bot already can auto-expand and handle your spawns, so basicly it can run without you.
+Will be beta after auto-placing for construction sites. And will be finished after impelement all functions mentioned in info
+
 Currently includes basic functions like:
 * passive-defence
 * active-defence
