@@ -3,6 +3,7 @@ var roleBuilder = require('role.builder')
 var roleUpgrader = require('role.upgrader')
 var rolePicker = require('role.picker')
 var roleFixer = require('role.fixer')
+var roleDistribuitor = require('role.disttibutor')
 
 var roleScout = require('role.scout')
 var roleExpansionist = require('role.expansionist')
@@ -30,6 +31,7 @@ module.exports.loop = function () {
         var builders = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'builder')
         var upgraders = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'upgrader')
         var fixers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'fixer')
+        var distrubs = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'distribuitor')
         
         var attackers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'attacker')
         var wallkeepers = _.filter(Game.spawns[spuwn].room.find(FIND_MY_CREEPS), (creep) => creep.memory.role == 'wallkeeper')
@@ -42,6 +44,11 @@ module.exports.loop = function () {
         if(pickers.length < 2 && harvesters.length > 0 && !Game.spawns[spuwn].memory.attak) {
             var newName = 'PICKUNIT-' + Game.time;
             respawn.run('picker', newName, spuwn)
+            
+        }
+        if(distrubs.length < 2 && pickers.length > 0 && !Game.spawns[spuwn].memory.attak) {
+            var newName = 'DISTUNIT-' + Game.time;
+            respawn.run('distribuitor', newName, spuwn)
             
         }
         if(upgraders.length < 3 && pickers.length > 0 && !Game.spawns[spuwn].memory.attak) {
@@ -125,6 +132,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'expansionist'){
             roleExpansionist.run(creep)
+        }
+        if(creep.memory.role == 'distribuitor'){
+            roleDistribuitor.run(creep, creep.room.find(FIND_MY_STRUCTURES, {filter:{structureType: STRUCTURE_SPAWN}})[0].name)
         }
     }
 }

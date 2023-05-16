@@ -43,6 +43,17 @@ var respawn = {
                 }                
             }
         }
+        if(job == 'distribuitor'){
+            if(Game.spawns[spwn].spawnCreep([CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE], 'BASED-' + nick, {memory: {role: 'distribuitor'}}) != '-6' && '-4'){
+
+
+            }else{
+                if(Game.spawns[spwn].spawnCreep([CARRY,CARRY,MOVE], 'SIMPLE-' + nick, {memory: {role: 'distribuitor'}}) != '-6' && '-4'){
+
+    
+                }                
+            }
+        }
         if(job == 'fixer'){
             if(Game.spawns[spwn].spawnCreep([WORK,CARRY,MOVE], nick, {memory: {role: 'fixer'}}) != '-6'){
 
